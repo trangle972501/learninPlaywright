@@ -1,0 +1,27 @@
+{
+  "name": "automation-web-testing",
+  "version": "1.0.0",
+  "description": "`npm init playwright@latest`",
+  "main": "index.js",
+  "scripts": {
+    "test-staging": "cross-env ENV=staging cucumber-js --config=config/cucumber.js || true",
+    "test-dev": "cross-env ENV=prod cucumber-js --config=config/cucumber.js || true",
+    "test-prod": "cross-env ENV=dev cucumber-js --config=config/cucumber.js || true"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.0.1",
+    "@playwright/test": "^1.39.0",
+    "cross-env": "^7.0.3",
+    "fs-extra": "^11.1.1",
+    "multiple-cucumber-html-reporter": "^3.3.0",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongodb": "^5.9.0",
+    "rimraf": "^5.0.5"
+  }
+}

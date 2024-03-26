@@ -1,0 +1,17 @@
+{
+    "default": {
+        "formatOptions":{
+            "snippetInterface":"async-await"
+        },
+        "paths":["src/test/features/dashboard/login.feature"],
+        "require": [
+            "src/test/steps/dashboard/login.js",
+            "src/hooks/hooks.js"
+        ],
+        "format": [
+            "html:test-results/cucumber-report.html",
+            "html:test-results/cucumber-report.json"
+        ],
+        "parallel": 1
+    }
+}
