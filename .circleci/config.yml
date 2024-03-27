@@ -21,12 +21,19 @@ commands:
     description: checkout and install dependencies
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - 'node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}'
       - run:
           name: Install Dependencies
           command: |
             if [ ! -d node_modules ]; then
               npm ci
             fi
+      - save_cache:
+          key: 'node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}'
+          paths:
+            - ./node_modules
   install_playwright_browsers:
     description: install browsers of playwright
     steps:
@@ -43,7 +50,7 @@ jobs:
   run_e2e_testing:
     executor:
       name: playwright
-    parallelism: 1
+    parallelism: 4
     resource_class: wrzmwufrzwq5epqqvpmy39/learn_playwright
     parameters:
       script:
