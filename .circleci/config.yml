@@ -6,6 +6,9 @@ jobs:
     resource_class: wrzmwufrzwq5epqqvpmy39/learn_playwright
     steps:
       - run: echo "Hi I'm on a Container Runner!"
+      - run: echo "${CIRCLE_NODE_INDEX}"
+      - run: echo "${SHARD}"
+      - run: echo "${CIRCLE_NODE_TOTAL}"
 workflows:
   build-workflow:
     jobs:
