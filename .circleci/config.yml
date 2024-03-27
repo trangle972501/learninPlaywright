@@ -1,19 +1,12 @@
 version: 2.1
-  
 jobs:
-  run_e2e_testing:
-    machine: true
+  build:
+    docker:
+      - image: cimg/base:current
     resource_class: wrzmwufrzwq5epqqvpmy39/learn_playwright
-    steps: 
-     - run:
-        echo 'Hi I am Runner'
-        echo ${CIRCLE_NODE_INDEX}
-        echo ${SHARD}
-        echo ${CIRCLE_NODE_TOTAL}
-
+    steps:
+      - run: echo "Hi I'm on a Container Runner!"
 workflows:
-  testing:
+  build-workflow:
     jobs:
-      - run_e2e_testing
-
-  
+      - build
